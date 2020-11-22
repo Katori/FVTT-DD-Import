@@ -67,6 +67,7 @@ class DDImporter extends Application
 
     data.dataSources = {
       data: "User Data",
+      existingFile: "User Data (existing file)",
       s3 : "S3"
     }
     data.defaultSource = settings.source || "data";
@@ -372,15 +373,27 @@ class DDImporter extends Application
   static checkSource(html)
   {
     let sourceValue= $("[name='source']")[0].value
-    if (sourceValue == "s3")
+    switch(sourceValue)
     {
-      html.find(".s3-section")[0].style.display=""
+      case "s3":
+        html.find("#dd-select-uploaded-file")[0].style.display="none"
+        html.find(".s3-section")[0].style.display="";
+        break;
+      case "data":
+        html.find("#dd-select-uploaded-file")[0].style.display="none"
+        html.find(".s3-section")[0].style.display="none"
+        break;
+      case "existingFile":
+        html.find("#dd-select-uploaded-file")[0].style.display=""
+        html.find(".s3-section")[0].style.display="none"
+        break;
+      default:
+        html.find("#dd-select-uploaded-file")[0].style.display="none"
+        html.find(".s3-section")[0].style.display="none"
     }
-    else
-    {
-      html.find(".s3-section")[0].style.display="none"
-    }
-
+    // data: "User Data",
+      // existingFile: "User Data (existing file)",
+      // s3 : "S3"
   }
 
 

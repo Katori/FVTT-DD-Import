@@ -48,6 +48,10 @@
   <div class="form-group import">
     <label class="import-options">Upload .dd2vtt</label>
   </div>
+  <div class="form-group import" id="dd-select-uploaded-file">
+    {{filePicker target="ddfile" type="dd2vtt"}}
+    <input class="image" type="text" name="ddfile" placeholder="path/ddfile.dd2vtt" value="{{ddfile}}" data-dtype="String" />
+  </div>
   <div class="form-group import" id="dd-upload-files">
     <button type="button" class="add-file">Add another file</button>
     <input class="file-input" type='file' name='file0' accept=".dd2vtt" />
